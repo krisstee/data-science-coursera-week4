@@ -1,3 +1,7 @@
+# Author: Kristi A.
+# JHU Data Science - Getting and Cleaning Data
+# Week 4 assignment
+
 library(dplyr)
 
 setwd("data-science-coursera-week4")
@@ -46,3 +50,11 @@ mean_std_dataset <- mean_std_dataset %>% arrange(activity) %>%
                     mutate(activity = as.character(factor(activity,
                                                           levels = 1:6,
                                                           labels = activity_labels$V2)))
+
+# create separate dataset containing the average of each variable for each
+# subject and activity
+tidy_set <- mean_std_dataset %>% group_by(subjects, activity) %>%
+            summarize_all(mean)
+
+# write completed table to a file
+write.table(tidy_set, "tidy_dataset.txt", row.names = FALSE)
