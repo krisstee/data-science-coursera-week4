@@ -20,3 +20,7 @@ run_analysis.R. It can be read back into R with a command like
 ```R
 read.table("tidy_data.txt", header = TRUE)
 ```
+
+###### About the tidy_data.txt dataset
+I have chosen to create a wide dataset to follow the principle that each
+variable should have its own column.
