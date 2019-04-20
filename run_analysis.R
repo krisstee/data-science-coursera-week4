@@ -1,3 +1,5 @@
+library(dplyr)
+
 setwd("data-science-coursera-week4")
 dataset_url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 # download and unpack data set
@@ -29,3 +31,10 @@ names(test_data) <- features$V2
 training_set <- cbind(training_subjects, training_data, training_lables)
 # combine test data
 test_set <- cbind(test_subjects, test_data, test_labels)
+# combine the training and test data
+full_dataset <- rbind(training_set, test_set)
+
+# collect mean and standard deviation measurements
+mean_dataset <- full_dataset[,grep("[mM]ean", names(full_dataset))]
+std_dataset <- full_dataset[,grep("[sS]td", names(full_dataset))]
+mean_std_dataset <- cbind(mean_dataset, std_dataset)
