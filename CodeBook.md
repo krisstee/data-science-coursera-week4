@@ -16,9 +16,23 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 ##### Variables
 
 ###### subjects
+
 30 volunteers participated in collecting data. Each subject was given an
 identifier between [1,30]
 
 | Values | Description |
 | ------ | ----------- |
-| 1-30   | Unique Identifier | 
+| 1-30   | Unique Identifier |
+
+###### activity
+There are 6 activities that were recorded from the subjects, they are as
+follows:
+
+| Activity |
+| -------- |
+| WALKING  |
+| WALKING_UPSTAIRS |
+| WALKING_DOWNSTAIRS |
+| SITTING  |
+| STANDING |
+| LAYING   |
