@@ -37,4 +37,12 @@ full_dataset <- rbind(training_set, test_set)
 # collect mean and standard deviation measurements
 mean_dataset <- full_dataset[,grep("[mM]ean", names(full_dataset))]
 std_dataset <- full_dataset[,grep("[sS]td", names(full_dataset))]
-mean_std_dataset <- cbind(mean_dataset, std_dataset)
+activities_subjects <- full_dataset[, c("subjects", "activity")]
+mean_std_dataset <- cbind(activities_subjects, mean_dataset, std_dataset)
+
+# rename activities
+activity_labels <- read.table("UCI\ HAR\ Dataset/activity_labels.txt", header = FALSE)
+mean_std_dataset <- mean_std_dataset %>% arrange(activity) %>%
+                    mutate(activity = as.character(factor(activity,
+                                                          levels = 1:6,
+                                                          labels = activity_labels$V2)))
